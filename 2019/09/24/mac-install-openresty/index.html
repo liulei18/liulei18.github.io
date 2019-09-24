@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="liulei18">
 <meta property="og:description" content="Description 很有幸在2016年的时候接触到OpenResty，OpenResty将强大的Lua嵌入到了Http Server中。这几年工作中也做了些OpenResty项目的落地，比如国际化、商品详情页、动态商品价格、后台权限管理、开放平台等，后来又接触到了基于OpenResty的API网关，比如Orange、Kong等。8月份在北京丽都皇冠假日酒店参加了 agentzh 回国举办的Op">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-24T16:29:23.077Z">
+<meta property="og:updated_time" content="2019-09-24T16:41:52.494Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mac-install-openresty">
 <meta name="twitter:description" content="Description 很有幸在2016年的时候接触到OpenResty，OpenResty将强大的Lua嵌入到了Http Server中。这几年工作中也做了些OpenResty项目的落地，比如国际化、商品详情页、动态商品价格、后台权限管理、开放平台等，后来又接触到了基于OpenResty的API网关，比如Orange、Kong等。8月份在北京丽都皇冠假日酒店参加了 agentzh 回国举办的Op">
@@ -361,13 +361,10 @@
 <ul>
 <li>安装OpenResty</li>
 </ul>
-<ol>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sudo ./configure --prefix=/usr/local/openresty \</span><br><span class="line">                 --with-cc-opt=&quot;-I/usr/local/opt/openssl/include/ -I/usr/local/opt/pcre/include/&quot; \</span><br><span class="line">                 --with-ld-opt=&quot;-L/usr/local/opt/openssl/lib/ -L/usr/local/opt/pcre/lib/&quot; \</span><br><span class="line">		         --with-luajit \</span><br><span class="line">		         --with-debug \</span><br><span class="line">		         --with-pcre=/Users/liulei18/Desktop/openresty/pcre-8.40 \</span><br><span class="line">                 --with-pcre-jit \</span><br><span class="line">		         --with-http_iconv_module \</span><br><span class="line">		         --with-http_postgres_module \</span><br><span class="line">		         --with-http_drizzle_module \</span><br><span class="line">		         --with-libdrizzle=/usr/local/drizzle \</span><br><span class="line">		         --with-http_realip_module \</span><br><span class="line">		         --with-http_stub_status_module \</span><br><span class="line">		         --add-module=/Users/liulei18/Desktop/openresty/nginx-eval-module \</span><br><span class="line">		         --add-module=/Users/liulei18/Desktop/openresty/ngx_http_auth_request_module</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>sudo make -j2 </p>
-</li>
-<li><p>sudo make install</p>
-</li>
+<p>1.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sudo ./configure --prefix=/usr/local/openresty \</span><br><span class="line">                 --with-cc-opt=&quot;-I/usr/local/opt/openssl/include/ -I/usr/local/opt/pcre/include/&quot; \</span><br><span class="line">                 --with-ld-opt=&quot;-L/usr/local/opt/openssl/lib/ -L/usr/local/opt/pcre/lib/&quot; \</span><br><span class="line">		         --with-luajit \</span><br><span class="line">		         --with-debug \</span><br><span class="line">		         --with-pcre=/Users/liulei18/Desktop/openresty/pcre-8.40 \</span><br><span class="line">                         --with-pcre-jit \</span><br><span class="line">		         --with-http_iconv_module \</span><br><span class="line">		         --with-http_postgres_module \</span><br><span class="line">		         --with-http_drizzle_module \</span><br><span class="line">		         --with-libdrizzle=/usr/local/drizzle \</span><br><span class="line">		         --with-http_realip_module \</span><br><span class="line">		         --with-http_stub_status_module \</span><br><span class="line">		         --add-module=/Users/liulei18/Desktop/openresty/nginx-eval-module \</span><br><span class="line">		         --add-module=/Users/liulei18/Desktop/openresty/ngx_http_auth_request_module</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>sudo make -j2 </li>
+<li>sudo make install</li>
 </ol>
 
       
