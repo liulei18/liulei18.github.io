@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="liulei18">
 <meta property="og:description" content="Description 最近看到很多人在安装 Orange 过程中碰了问题，大多数是因为找不到第三方依赖包。其实 README.md 安装步骤已经写的很详细了，但是对于新手来说，特别是对 OpenResty 都不太熟悉的同学，还是有点不太友好。因为 Orange 是基于 OpenResty 的 API 网关。所以在使用 Orange 之前，建议去把 OpenResty 的官方文档认真的读两遍，可以">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-05T17:05:53.145Z">
+<meta property="og:updated_time" content="2019-10-05T18:10:15.320Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="install-orange-on-linux">
 <meta name="twitter:description" content="Description 最近看到很多人在安装 Orange 过程中碰了问题，大多数是因为找不到第三方依赖包。其实 README.md 安装步骤已经写的很详细了，但是对于新手来说，特别是对 OpenResty 都不太熟悉的同学，还是有点不太友好。因为 Orange 是基于 OpenResty 的 API 网关。所以在使用 Orange 之前，建议去把 OpenResty 的官方文档认真的读两遍，可以">
@@ -309,7 +309,7 @@
 
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><ul>
-<li><p>最近看到很多人在安装 <code>Orange</code> 过程中碰了问题，大多数是因为找不到第三方依赖包。其实 <code>README.md</code> 安装步骤已经写的很详细了，但是对于新手来说，特别是对 <code>OpenResty</code> 都不太熟悉的同学，还是有点不太友好。因为 <code>Orange</code> 是基于 <code>OpenResty</code> 的 API 网关。所以在使用 <code>Orange</code> 之前，建议去把 <code>OpenResty</code> 的<a href="https://github.com/openresty/lua-nginx-module" target="_blank" rel="noopener">官方文档</a>认真的读两遍，可以避免由于自己缺乏常识而导致的一些错误以至于浪费太多时间。不可否认, <code>Orange</code> 现在对于插件的第三方依赖的管理方式并不是最完美的，这其实不是 <code>Orange</code> 本身的问题，是由于 <code>OpenResty</code> 到现在官方也没有提供一种特别好用的工具， <a href="https://github.com/openresty/opm" target="_blank" rel="noopener">opm</a> 现在还是仅仅处于能用的状态，相比于 <code>Node.js</code> 社区中的 <code>npm</code> 还有很大的进步空间。</p>
+<li><p>最近看到很多人在安装 <code>Orange</code> 过程中碰了问题，大多数是因为找不到第三方依赖包。其实 <a href="https://github.com/orlabs/orange" target="_blank" rel="noopener">README.md</a> 安装步骤已经写的很详细了，但是对于新手来说，特别是对 <code>OpenResty</code> 都不太熟悉的同学，还是有点不太友好。因为 <code>Orange</code> 是基于 <code>OpenResty</code> 的 API 网关。所以在使用 <code>Orange</code> 之前，建议去把 <code>OpenResty</code> 的<a href="https://github.com/openresty/lua-nginx-module" target="_blank" rel="noopener">官方文档</a>认真的读两遍，可以避免由于自己缺乏常识而导致的一些错误以至于浪费太多时间。不可否认, <code>Orange</code> 现在对于插件的第三方依赖的管理方式并不是最完美的，这其实不是 <code>Orange</code> 本身的问题，是由于 <code>OpenResty</code> 到现在官方也没有提供一种特别好用的工具， <a href="https://github.com/openresty/opm" target="_blank" rel="noopener">opm</a> 现在还是仅仅处于能用的状态，相比于 <code>Node.js</code> 社区中的 <code>npm</code> 还有很大的进步空间。</p>
 </li>
 <li><p>现在 <code>Orange</code> 的开发成员将将插件所依赖的第三方包发布到 <code>opm</code> <a href="http://opm.openresty.org/" target="_blank" rel="noopener">仓库</a> 中，我们只需要通过 <code>opm --install-dir=./ get zhangbao0325/orangelib</code> 就可以将所有第三方依赖下载下来，目前看来是一个不错的解决办法。但是也存在一个问题，由于维护这个仓库的人员跟插件的贡献者并不是同一个人，所有有可能会导致他维护提供的三方依赖包不是完全正确的，我在这个过程中遇到了几个问题，详情参看 <a href="https://github.com/orlabs/orange/issues/280" target="_blank" rel="noopener">#280</a> <a href="https://github.com/orlabs/orange/issues/281" target="_blank" rel="noopener">#281</a>。</p>
 </li>
