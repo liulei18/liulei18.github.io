@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="liulei18">
 <meta property="og:description" content="Description 最近看到很多人在安装 Orange 过程中碰了问题，大多数是因为找不到第三方依赖包。其实 README.md 安装步骤已经写的很详细了，但是对于新手来说，特别是对 OpenResty 都不太熟悉的同学，还是有点不太友好。因为 Orange 是基于 OpenResty 的 API 网关。所以在使用 Orange 之前，建议去把 OpenResty 的官方文档认真的读两遍，可以">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-05T18:10:15.320Z">
+<meta property="og:updated_time" content="2019-10-06T06:51:24.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="install-orange-on-linux">
 <meta name="twitter:description" content="Description 最近看到很多人在安装 Orange 过程中碰了问题，大多数是因为找不到第三方依赖包。其实 README.md 安装步骤已经写的很详细了，但是对于新手来说，特别是对 OpenResty 都不太熟悉的同学，还是有点不太友好。因为 Orange 是基于 OpenResty 的 API 网关。所以在使用 Orange 之前，建议去把 OpenResty 的官方文档认真的读两遍，可以">
@@ -330,7 +330,13 @@
 <li>resolver：DNS解析</li>
 </ol>
 <ul>
-<li>通过 <code>make install</code> 安装。通过 <code>orange start</code> 启动，执行 <code>orange help</code> 来查看哪些命令可用。内置的Dashboard可通过 <code>http://localhost:9999</code> 访问。</li>
+<li><p>通过 <code>make install</code> 安装</p>
+</li>
+<li><p>安装第三方依赖包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/orange/</span><br><span class="line">opm --install-dir=./ get zhangbao0325/orangeli</span><br><span class="line">luarocks install luafilesystem</span><br><span class="line">luarocks install luasocket</span><br><span class="line">luarocks install lrandom</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过 <code>orange start</code> 启动，执行 <code>orange help</code> 来查看哪些命令可用。内置的Dashboard可通过 <code>http://localhost:9999</code> 访问</p>
+</li>
 </ul>
 
       
