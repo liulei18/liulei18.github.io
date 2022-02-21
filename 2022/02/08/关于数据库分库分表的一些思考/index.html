@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="Description 最近看到很多人在安装 Orange 过程中碰了问题，大多数是因为找不到第三方依赖包。其实 README.md 安装步骤已经写的很详细了，但是对于新手来说，特别是对 OpenResty 都不太熟悉的同学，还是有点不太友好。因为 Orange 是基于 OpenResty 的 API 网关。所以在使用 Orange 之前，建议去把 OpenResty 的官方文档认真的读两遍，可以">
+<meta name="description" content="1.数据库使用阶段 1.1 单库单表  1.2 单库多表(目前阶段)  1.3 多库多表   2.什么情况下需要分库分表 数据库表中的数量达到了一定的量级  数据库吞吐量达到了瓶颈，需要增加数据库实例开分解大量数据库请求带来的系统压力  扩容时对应用层的配置改变最少，需要在每个数据库实例中预留足够的数据库数量   3.解决方案 3.1 拆分的方式:垂直拆分和水平拆分垂直拆分是指，将一个属性较多，一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="install-orange-on-linux">
-<meta property="og:url" content="http://yoursite.com/2019/10/05/install-orange-on-linux/index.html">
+<meta property="og:title" content="关于数据库分库分表的一些思考">
+<meta property="og:url" content="http://yoursite.com/2022/02/08/关于数据库分库分表的一些思考/index.html">
 <meta property="og:site_name" content="liulei18">
-<meta property="og:description" content="Description 最近看到很多人在安装 Orange 过程中碰了问题，大多数是因为找不到第三方依赖包。其实 README.md 安装步骤已经写的很详细了，但是对于新手来说，特别是对 OpenResty 都不太熟悉的同学，还是有点不太友好。因为 Orange 是基于 OpenResty 的 API 网关。所以在使用 Orange 之前，建议去把 OpenResty 的官方文档认真的读两遍，可以">
+<meta property="og:description" content="1.数据库使用阶段 1.1 单库单表  1.2 单库多表(目前阶段)  1.3 多库多表   2.什么情况下需要分库分表 数据库表中的数量达到了一定的量级  数据库吞吐量达到了瓶颈，需要增加数据库实例开分解大量数据库请求带来的系统压力  扩容时对应用层的配置改变最少，需要在每个数据库实例中预留足够的数据库数量   3.解决方案 3.1 拆分的方式:垂直拆分和水平拆分垂直拆分是指，将一个属性较多，一">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-06T08:06:52.405Z">
+<meta property="og:updated_time" content="2022-02-21T07:36:10.856Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="install-orange-on-linux">
-<meta name="twitter:description" content="Description 最近看到很多人在安装 Orange 过程中碰了问题，大多数是因为找不到第三方依赖包。其实 README.md 安装步骤已经写的很详细了，但是对于新手来说，特别是对 OpenResty 都不太熟悉的同学，还是有点不太友好。因为 Orange 是基于 OpenResty 的 API 网关。所以在使用 Orange 之前，建议去把 OpenResty 的官方文档认真的读两遍，可以">
+<meta name="twitter:title" content="关于数据库分库分表的一些思考">
+<meta name="twitter:description" content="1.数据库使用阶段 1.1 单库单表  1.2 单库多表(目前阶段)  1.3 多库多表   2.什么情况下需要分库分表 数据库表中的数量达到了一定的量级  数据库吞吐量达到了瓶颈，需要增加数据库实例开分解大量数据库请求带来的系统压力  扩容时对应用层的配置改变最少，需要在每个数据库实例中预留足够的数据库数量   3.解决方案 3.1 拆分的方式:垂直拆分和水平拆分垂直拆分是指，将一个属性较多，一">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/05/install-orange-on-linux/">
+  <link rel="canonical" href="http://yoursite.com/2022/02/08/关于数据库分库分表的一些思考/">
 
 
 
 
 
-  <title>install-orange-on-linux | liulei18</title>
+  <title>关于数据库分库分表的一些思考 | liulei18</title>
   
 
 
@@ -241,7 +241,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/05/install-orange-on-linux/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/02/08/关于数据库分库分表的一些思考/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liulei18">
@@ -258,7 +258,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">install-orange-on-linux</h1>
+          <h1 class="post-title" itemprop="name headline">关于数据库分库分表的一些思考</h1>
         
 
         <div class="post-meta">
@@ -270,8 +270,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-05T23:33:38+08:00">
-                2019-10-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-02-08T15:29:48+08:00">
+                2022-02-08
               </time>
             
 
@@ -308,36 +308,81 @@
       
 
       
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><ul>
-<li><p>最近看到很多人在安装 <code>Orange</code> 过程中碰了问题，大多数是因为找不到第三方依赖包。其实 <a href="https://github.com/orlabs/orange" target="_blank" rel="noopener">README.md</a> 安装步骤已经写的很详细了，但是对于新手来说，特别是对 <code>OpenResty</code> 都不太熟悉的同学，还是有点不太友好。因为 <code>Orange</code> 是基于 <code>OpenResty</code> 的 API 网关。所以在使用 <code>Orange</code> 之前，建议去把 <code>OpenResty</code> 的<a href="https://github.com/openresty/lua-nginx-module" target="_blank" rel="noopener">官方文档</a>认真的读两遍，可以避免由于自己缺乏常识而导致的一些错误以至于浪费太多时间。不可否认, <code>Orange</code> 现在对于插件的第三方依赖的管理方式并不是最完美的，这其实不是 <code>Orange</code> 本身的问题，是由于 <code>OpenResty</code> 到现在官方也没有提供一种特别好用的工具， <a href="https://github.com/openresty/opm" target="_blank" rel="noopener">opm</a> 现在还是仅仅处于能用的状态，相比于 <code>Node.js</code> 社区中的 <code>npm</code> 还有很大的进步空间。</p>
+        <h2 id="1-数据库使用阶段"><a href="#1-数据库使用阶段" class="headerlink" title="1.数据库使用阶段"></a>1.数据库使用阶段</h2><ul>
+<li><p>1.1 单库单表</p>
 </li>
-<li><p>现在 <code>Orange</code> 的开发成员将将插件所依赖的第三方包发布到 <code>opm</code> <a href="http://opm.openresty.org/" target="_blank" rel="noopener">仓库</a> 中，我们只需要通过 <code>opm --install-dir=./ get zhangbao0325/orangelib</code> 就可以将所有第三方依赖下载下来，目前看来是一个不错的解决办法。但是也存在一个问题，由于维护这个仓库的人员跟插件的贡献者并不是同一个人，所有有可能会导致他维护提供的三方依赖包不是完全正确的，我在这个过程中遇到了几个问题，详情参看 <a href="https://github.com/orlabs/orange/issues/280" target="_blank" rel="noopener">#280</a> <a href="https://github.com/orlabs/orange/issues/281" target="_blank" rel="noopener">#281</a>。</p>
+<li><p>1.2 单库多表(目前阶段)</p>
 </li>
-</ul>
-<h3 id="Install-Orange"><a href="#Install-Orange" class="headerlink" title="Install Orange"></a>Install Orange</h3><ul>
-<li>安装最新版本的 <code>OpenResty</code>,注意在编译 <code>OpenResty</code> 的时候需要添加上 <code>--with-http_stub_status_module</code>,监控插件需要统计 <code>http</code> 某些状态数据</li>
-<li>将 <code>nginx</code> 和 <code>resty</code> 命令配置到环境变量中，使用 <code>nginx -v</code> 和 <code>resty -v</code> 验证是否正常输出</li>
-<li>安装 <a href="https://github.com/sumory/lor" target="_blank" rel="noopener">lor</a> 框架</li>
-<li>安装 <code>MySQL</code></li>
-<li>将 <code>install/oorange-v0.6.4.sql</code> 导入到 <code>orange</code> 库中</li>
-<li>修改配置文件<br>一个是关于 <code>Dashboard</code> 和插件的配置文件 <code>conf/orange.conf</code>，另一个是 <code>Nginx</code> 的配置文件 <code>conf/nginx.conf</code><br>orange.conf配置如下，请根据实际情况修改<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;plugins&quot;: [ //可用的插件列表，若不需要可从中删除，系统将自动加载这些插件的开放API并在7777端口暴露</span><br><span class="line">        &quot;stat&quot;,</span><br><span class="line">        &quot;monitor&quot;,</span><br><span class="line">        &quot;redirect&quot;,</span><br><span class="line">        &quot;rewrite&quot;,</span><br><span class="line">        &quot;rate_limiting&quot;,</span><br><span class="line">        &quot;property_rate_limiting&quot;,</span><br><span class="line">        &quot;basic_auth&quot;,</span><br><span class="line">        &quot;key_auth&quot;,</span><br><span class="line">        &quot;signature_auth&quot;,</span><br><span class="line">        &quot;waf&quot;,</span><br><span class="line">        &quot;divide&quot;,</span><br><span class="line">        &quot;kvstore&quot;</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    &quot;store&quot;: &quot;mysql&quot;,//目前仅支持mysql存储</span><br><span class="line">    &quot;store_mysql&quot;: &#123; //MySQL配置</span><br><span class="line">        &quot;timeout&quot;: 5000,</span><br><span class="line">        &quot;connect_config&quot;: &#123;//连接信息，请修改为需要的配置</span><br><span class="line">            &quot;host&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">            &quot;port&quot;: 3306,</span><br><span class="line">            &quot;database&quot;: &quot;orange&quot;,</span><br><span class="line">            &quot;user&quot;: &quot;root&quot;,</span><br><span class="line">            &quot;password&quot;: &quot;&quot;,</span><br><span class="line">            &quot;max_packet_size&quot;: 1048576</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;pool_config&quot;: &#123;</span><br><span class="line">            &quot;max_idle_timeout&quot;: 10000,</span><br><span class="line">            &quot;pool_size&quot;: 3</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;desc&quot;: &quot;mysql configuration&quot;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    &quot;dashboard&quot;: &#123;//默认的Dashboard配置.</span><br><span class="line">        &quot;auth&quot;: false, //设为true，则需用户名、密码才能登录Dashboard,默认的用户名和密码为admin/orange_admin</span><br><span class="line">        &quot;session_secret&quot;: &quot;y0ji4pdj61aaf3f11c2e65cd2263d3e7e5&quot;, //加密cookie用的盐，自行修改即可</span><br><span class="line">        &quot;whitelist&quot;: [//不需要鉴权的uri，如登录页面，无需修改此值</span><br><span class="line">            &quot;^/auth/login$&quot;,</span><br><span class="line">            &quot;^/error/$&quot;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    &quot;api&quot;: &#123;//API server配置</span><br><span class="line">        &quot;auth_enable&quot;: true,//访问API时是否需要授权</span><br><span class="line">        &quot;credentials&quot;: [//HTTP Basic Auth配置，仅在开启auth_enable时有效，自行添加或修改即可</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;username&quot;:&quot;api_username&quot;,</span><br><span class="line">                &quot;password&quot;:&quot;api_password&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<li><p>1.3 多库多表</p>
 </li>
 </ul>
-<p>nginx.conf中需要注意以下几个配置</p>
-<ol>
-<li>lua_package_path：需要根据本地环境配置适当修改</li>
-<li>resolver：DNS解析</li>
-</ol>
+<h2 id="2-什么情况下需要分库分表"><a href="#2-什么情况下需要分库分表" class="headerlink" title="2.什么情况下需要分库分表"></a>2.什么情况下需要分库分表</h2><ul>
+<li><p>数据库表中的数量达到了一定的量级</p>
+</li>
+<li><p>数据库吞吐量达到了瓶颈，需要增加数据库实例开分解大量数据库请求带来的系统压力</p>
+</li>
+<li><p>扩容时对应用层的配置改变最少，需要在每个数据库实例中预留足够的数据库数量</p>
+</li>
+</ul>
+<h2 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h2><ul>
+<li>3.1 拆分的方式:垂直拆分和水平拆分<br>垂直拆分是指，将一个属性较多，一行数据较大的表，将不同的属性拆分到不同的表中，以降低单库（表）大小，达到提升性能的目的的方法，垂直切分后，各个库（表）的特点是：</li>
+</ul>
+<p>（1）每个库（表）的结构都不一样</p>
+<p>（2）一般来说，每个库（表）的属性至少有一列交集，一般是主键</p>
+<p>（3）所有库（表）的并集是全量数据</p>
+<p>水平切分是指，以某个字段为依据（例如uid），按照一定规则（例如取模），将一个库（表）上的数据拆分到多个库（表）上，以降低单库（表）大小，达到提升性能的目的的方法，水平切分后，各个库（表）的特点是：</p>
+<p>（1）每个库（表）的结构都一样</p>
+<p>（2）每个库（表）的数据都不一样，没有交集</p>
+<p>（3）所有库（表）的并集是全量数据</p>
 <ul>
-<li><p>通过 <code>make install</code> 安装</p>
-</li>
-<li><p>安装第三方依赖包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/orange/</span><br><span class="line">opm --install-dir=./ get zhangbao0325/orangeli</span><br><span class="line">luarocks install luafilesystem</span><br><span class="line">luarocks install luasocket</span><br><span class="line">luarocks install lrandom</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过 <code>orange start</code> 启动，执行 <code>orange help</code> 来查看哪些命令可用。内置的Dashboard可通过 <code>http://localhost:9999</code> 访问</p>
-</li>
+<li>3.2 实现的方式:客户端分片,代理分片和支持实物的分布式数据库</li>
 </ul>
+<ul>
+<li>3.2.1 客户端分片</li>
+</ul>
+<p>具体实现方式:在应用层直接实现,通过制定JDBC协议实现，通过定制ORM框架实现</p>
+<p>应用层直接实现</p>
+<p>直接在应用层读取分片规则，然后解析分片规则，根据分片规则实现切分的路由逻辑，从应用层直接决定每次操作应该使用哪个数据库实例，数据库以及数据库表；这种实现方案虽然入侵了业务，但是实现起来比较简单，适合快速上线，而且切分逻辑由自己开发，如果在生产上产生了问题，比较容易解决</p>
+<p>制定JDBC协议实现</p>
+<p>在应用层直接实现会入侵应用的业务实现，对开发人员的能力要求较高，为了开发人员把精力集中在业务逻辑的开发上，可以通过制定jdbc协议来实现，保证业务层接口透明，Sharding JDBC便采用了这种方案</p>
+<p>通过定制ORM框架实现</p>
+<p>把分片规则实现放到ORM框架中或者通过ORM框架支持的机制来实现分库分表的逻辑，通用的做法是在Mybatis配置文件中增加表索引的参数来实现分片</p>
+<ul>
+<li>3.2.2 代理分片</li>
+</ul>
+<p>代理分片是在应用层和数据库层增加一个代理层，把分片的路由规则配置放在代理层，代理层对外提供与JDBC兼容的接口跟应用层，只需要关系业务逻辑实现，待业务逻辑实现后，在代理层配置路由规则即可，缺点是增加了代理层，尽管代理层是轻量级的转发协议，但是要实现JDBC协议的解析，并且通过分片的路由规则来路由请求，对每个数据库操作都增加了一层网络传输，对性能是有影响的，需要维护增加的代理层，也有硬件成本，还要有解决bug的技术专家，成本比价高，Cobar和MyCat是通过此种方式实现</p>
+<ul>
+<li>3.2.3 支持事务的分布式数据库</li>
+</ul>
+<p>市面上现有的产品如OceanBase，TiDB等都对外提供可伸缩的体系架构，并提供一定的分布式事务支持，将可伸缩的特点和分布式事务的实现包装到分布式数据库内部实现，对使用者透明，例如:TiDB对外提供JDBC接口，让应用层像使用MySQL一样来使用TiDB，而不用关注内部是如何伸缩，分片及处理分布式事务的，此类数据库适合非交易系统，例如大数据日志系统，统计系统，查询系统等</p>
+<h2 id="4-引起的问题"><a href="#4-引起的问题" class="headerlink" title="4.引起的问题"></a>4.引起的问题</h2><ul>
+<li>4.1 扩容与迁移<br>在分库分表后，如果涉及的分片已经达到了承载数据的最大值，就需要对集群进行扩容。扩容是很麻烦的，一般会成倍地扩容。</li>
+</ul>
+<p>通用的扩容方法包括如下5个步骤。</p>
+<p>（1）按照新旧分片规则，对新旧数据库进行双写。</p>
+<p>（2）将双写前按照旧分片规则写入的历史数据，根据新分片规则迁移写入新的数据库。</p>
+<p>（3）将按照旧的分片规则查询改为按照新的分片规则查询。</p>
+<p>（4）将双写数据库逻辑从代码中下线，只按照新的分片规则写入数据。</p>
+<p>（5）删除按照旧分片规则写入的历史数据。</p>
+<p>这里，在第2步迁移历史数据时，由于数据量很大，通常会导致不一致，因此，先清洗旧的数据，洗完后再迁移到新规则的新数据库下，再做全量对比，对比后评估在迁移的过程中是否有数据的更新，如果有的话就再清洗、迁移，最后以对比没有差距为准。</p>
+<p>如果是金融交易数据，则最好将动静数据分离，随着时间的流逝，某个时间点之前的数据是不会被更新的，我们就可以拉长双写的时间窗口，这样在足够长的时间流逝后，只需迁移那些不再被更新的历史数据即可，就不会在迁移的过程中由于历史数据被更新而导致代理不一致。</p>
+<p>在数据量巨大时，如果数据迁移后没法进行全量对比，就需要进行抽样对比，在进行抽样对比时要根据业务的特点选取一些具有某类特征性的数据进行对比。</p>
+<p>在迁移的过程中，数据的更新会导致不一致，可以在线上记录迁移过程中的更新操作的日志，迁移后根据更新日志与历史数据共同决定数据的最新状态，来达到迁移数据的最终一致性。</p>
+<p>在分库分表以后，如果查询的标准是分片的主键，则可以通过分片规则再次路由并查询；但是对于其他主键的查询、范围查询、关联查询、查询结果排序等，并不是按照分库分表维度来查询的。</p>
+<ul>
+<li>4.2 查询问题<br>例如，用户购买了商品，需要将交易记录保存下来，那么如果按照买家的纬度分表，则每个买家的交易记录都被保存在同一表中，我们可以很快、很方便地查到某个买家的购买情况，但是某个商品被购买的交易数据很有可能分布在多张表中，查找起来比较麻烦。反之，按照商品维度分表，则可以很方便地查找到该商品的购买情况，但若要查找到买家的交易记录，则会比较麻烦。</li>
+</ul>
+<p>所以常见的解决方式如下。</p>
+<p>（1）在多个分片表查询后合并数据集，这种方式的效率很低。</p>
+<p>（2）记录两份数据，一份按照买家纬度分表，一份按照商品维度分表。</p>
+<p>（3）通过搜索引擎解决，但如果实时性要求很高，就需要实现实时搜索。</p>
+<p>实际上，在高并发的服务平台下，交易系统是专门做交易的，因为交易是核心服务，SLA的级别比较高，所以需要和查询系统分离，查询一般通过其他系统进行，数据也可能是冗余存储的。</p>
+<p>这里再举个例子，在某电商交易平台下，可能有买家查询自己在某一时间段的订单，也可能有卖家查询自己在某一时间段的订单，如果使用了分库分表方案，则这两个需求是难以满足的。因此，通用的解决方案是，在交易生成时生成一份按照买家分片的数据副本和一份按照卖家分片的数据副本，查询时分别满足之前的两个需求，因此，查询的数据和交易的数据可能是分别存储的，并从不同的系统提供接口。</p>
+<p>另外，在电商系统中，在一个交易订单生成后，一般需要引用到订单中交易的商品实体，如果简单地引用，若商品的金额等信息发生变化，则会导致原订单上的商品信息也会发生变化，这样买家会很疑惑。因此，通用的解决方案是在交易系统中存储商品的快照，在查询交易时使用交易的快照，因为快照是个静态数据，永远都不会更新，所以解决了这个问题。可见查询的问题最好在单独的系统中使用其他技术来解决，而不是在交易系统中实现各类查询功能；当然，也可以通过对商品的变更实施版本化，在交易订单中引用商品的版本信息，在版本更新时保留商品的旧版本，这也是一种不错的解决方案。</p>
+<p>最后，关联的表有可能不在同一数据库中，所以基本不可能进行联合查询，需要借助大数据技术来实现，也就是上面所说的第3种方法，即通过大数据技术统一聚合和处理关系型数据库的数据，然后对外提供查询操作</p>
+<p>通过大数据方式来提供聚合查询的方式</p>
+<p>4.3 分布式事务<br>三种解决方案:两段式提交协议，最大努力保证模式和事务补偿机制</p>
+<p>4.4 同组数据跨库<br>要尽量把同一组数据放到同一台数据库服务器上，不但在某些场景下可以利用本地事务的强一致性，还可以使这组数据自治。以电商为例，我们的应用有两个数据库db0和db1，分库分表后，按照id维度，将卖家A的交易信息存放到db0中。当数据库db1挂掉时，卖家A的交易信息不受影响，依然可以正常使用。也就是说，要避免数据库中的数据依赖另一数据库中的数据。</p>
 
       
     </div>
@@ -391,8 +436,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/24/mac-install-openresty/" rel="next" title="mac-install-openresty">
-                <i class="fa fa-chevron-left"></i> mac-install-openresty
+              <a href="/2022/01/21/区块链发展与应用/" rel="next" title="区块链发展与应用">
+                <i class="fa fa-chevron-left"></i> 区块链发展与应用
               </a>
             
           </div>
@@ -400,10 +445,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2022/01/21/区块链发展与应用/" rel="prev" title="区块链发展与应用">
-                区块链发展与应用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -535,7 +576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-Orange"><span class="nav-number">1.1.</span> <span class="nav-text">Install Orange</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-数据库使用阶段"><span class="nav-number">1.</span> <span class="nav-text">1.数据库使用阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-什么情况下需要分库分表"><span class="nav-number">2.</span> <span class="nav-text">2.什么情况下需要分库分表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-解决方案"><span class="nav-number">3.</span> <span class="nav-text">3.解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-引起的问题"><span class="nav-number">4.</span> <span class="nav-text">4.引起的问题</span></a></li></ol></div>
             
 
           </div>
