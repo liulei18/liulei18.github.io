@@ -325,7 +325,7 @@
 <h2 id="1-3-埋点上报的单位：Span"><a href="#1-3-埋点上报的单位：Span" class="headerlink" title="1.3 埋点上报的单位：Span"></a>1.3 埋点上报的单位：Span</h2><p>Span：埋点信息。<br>RPC调用的埋点由server、client参与，调用完成后，server、client分别上报一个埋点信息，称为span。</p>
 <h2 id="1-4-用户自定义埋点：Annotation、Context"><a href="#1-4-用户自定义埋点：Annotation、Context" class="headerlink" title="1.4 用户自定义埋点：Annotation、Context"></a>1.4 用户自定义埋点：Annotation、Context</h2><p>Annotation：自定义埋点，主要用于属性上报，手动传递key-value 到span中。比如给trace加上userid=xxx<br>Context：上下文，主要用于server、client的通信参数，传递的信息包括灰度标记、泳道信息等，主要在全链路压测（传递压测标识）、服务鉴权等场景使用</p>
 <h1 id="2-工作原理"><a href="#2-工作原理" class="headerlink" title="2 工作原理"></a>2 工作原理</h1><p>同一个线程同一时间只会处理同一个请求，可以使用ThreadLocal变量存储client、server的Span对象</p>
-<h1 id="3-数据采集"><a href="#3-数据采集" class="headerlink" title="3 数据采集"></a>3 数据采集</h1><p>有traceid、spanid，在记录log时带上这两个字段，就可以将一次请求串联起来</p>
+<h1 id="3-数据采集"><a href="#3-数据采集" class="headerlink" title="3 数据采集"></a>3 数据采集</h1><p>有traceid、spanid，在记录log时带上这两个字段，就可以将一次请求串联起来。设置可以将traceid、spanid注入到数据库连接池应用里，慢sql日志就可以打印traceid、spanid，为响应过慢提供有效分析数据。</p>
 <h2 id="3-1-数据采样"><a href="#3-1-数据采样" class="headerlink" title="3.1 数据采样"></a>3.1 数据采样</h2><p>每次rpc都上报log会对系统带来灾难性的带宽消耗。在spanid=0根节点服务采样，后续都按根节点方式采样就能拼接成一个调用链路。<br>为什么有的采样会丢失？每个服务采样队列满了，多余的数据会被丢弃掉。<br>为了能保证定位问题，一般对异常链路会采样</p>
 
           
