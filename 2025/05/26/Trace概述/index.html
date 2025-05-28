@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="liulei18">
 <meta property="og:description" content="Trace分布式链路追踪系统设计理念基于Google Dapper：分布式链路追踪系统架构，包括埋点工具、数据收集、分析、存储、展示等一系列服务。Trace通过在中间件中埋点，采集和标记分布式组件在交互时调用方法、调用时长、调用结果等一些必要信息，可以展示调用链的全貌、状态、异常等信息，也可以用来分析耗时瓶颈、通过日志排查问题。 1 链路追踪的基本概念1.1 RPC中的角色与过程：Client、S">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2025-05-28T03:42:40.043Z">
+<meta property="og:updated_time" content="2025-05-28T03:47:26.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Trace概述">
 <meta name="twitter:description" content="Trace分布式链路追踪系统设计理念基于Google Dapper：分布式链路追踪系统架构，包括埋点工具、数据收集、分析、存储、展示等一系列服务。Trace通过在中间件中埋点，采集和标记分布式组件在交互时调用方法、调用时长、调用结果等一些必要信息，可以展示调用链的全貌、状态、异常等信息，也可以用来分析耗时瓶颈、通过日志排查问题。 1 链路追踪的基本概念1.1 RPC中的角色与过程：Client、S">
@@ -321,11 +321,11 @@
         <p>Trace分布式链路追踪系统设计理念基于<a href="https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/" target="_blank" rel="noopener">Google Dapper：分布式链路追踪系统架构</a>，包括埋点工具、数据收集、分析、存储、展示等一系列服务。Trace通过在中间件中埋点，采集和标记分布式组件在交互时调用方法、调用时长、调用结果等一些必要信息，可以展示调用链的全貌、状态、异常等信息，也可以用来分析耗时瓶颈、通过日志排查问题。</p>
 <h1 id="1-链路追踪的基本概念"><a href="#1-链路追踪的基本概念" class="headerlink" title="1 链路追踪的基本概念"></a>1 链路追踪的基本概念</h1><h2 id="1-1-RPC中的角色与过程：Client、Server、Trace"><a href="#1-1-RPC中的角色与过程：Client、Server、Trace" class="headerlink" title="1.1 RPC中的角色与过程：Client、Server、Trace"></a>1.1 RPC中的角色与过程：Client、Server、Trace</h2><p>Trace：用户一次完整的请求过程</p>
 <h2 id="1-2-调用链路中的标记信息：TraceId、SpanId、SpanName"><a href="#1-2-调用链路中的标记信息：TraceId、SpanId、SpanName" class="headerlink" title="1.2 调用链路中的标记信息：TraceId、SpanId、SpanName"></a>1.2 调用链路中的标记信息：TraceId、SpanId、SpanName</h2><p>TraceId：用户一次完整请求过程的唯一id标记<br>SpanName：调用不同的环节，通常根据交互的角色不同稍有不同，rpc中spanname可以是类名+方法名，数据库 spanname 可以是sql，kafka可以使用topic+消费组<br>SpanId：调用的发起顺序</p>
-<h2 id="1-3-埋点上报的单位：Span"><a href="#1-3-埋点上报的单位：Span" class="headerlink" title="1.3 埋点上报的单位：Span"></a>1.3 埋点上报的单位：Span</h2><p>Span：埋点信息。<br><br><br>RPC调用的埋点由server、client参与，调用完成后，server、client分别上报一个埋点信息，称为span。</p>
-<h2 id="1-4-用户自定义埋点：Annotation、Context"><a href="#1-4-用户自定义埋点：Annotation、Context" class="headerlink" title="1.4 用户自定义埋点：Annotation、Context"></a>1.4 用户自定义埋点：Annotation、Context</h2><p>Annotation：自定义埋点，主要用于属性上报，手动传递key-value 到span中。比如给trace加上userid=xxx<br><br><br>Context：上下文，主要用于server、client的通信参数，传递的信息包括灰度标记、泳道信息等，主要在全链路压测（传递压测标识）、服务鉴权等场景使用</p>
+<h2 id="1-3-埋点上报的单位：Span"><a href="#1-3-埋点上报的单位：Span" class="headerlink" title="1.3 埋点上报的单位：Span"></a>1.3 埋点上报的单位：Span</h2><p>Span：埋点信息。<br>RPC调用的埋点由server、client参与，调用完成后，server、client分别上报一个埋点信息，称为span。</p>
+<h2 id="1-4-用户自定义埋点：Annotation、Context"><a href="#1-4-用户自定义埋点：Annotation、Context" class="headerlink" title="1.4 用户自定义埋点：Annotation、Context"></a>1.4 用户自定义埋点：Annotation、Context</h2><p>Annotation：自定义埋点，主要用于属性上报，手动传递key-value 到span中。比如给trace加上userid=xxx<br>Context：上下文，主要用于server、client的通信参数，传递的信息包括灰度标记、泳道信息等，主要在全链路压测（传递压测标识）、服务鉴权等场景使用</p>
 <h1 id="2-工作原理"><a href="#2-工作原理" class="headerlink" title="2 工作原理"></a>2 工作原理</h1><p>同一个线程同一时间只会处理同一个请求，可以使用ThreadLocal变量存储client、server的Span对象</p>
 <h1 id="3-数据采集"><a href="#3-数据采集" class="headerlink" title="3 数据采集"></a>3 数据采集</h1><p>有traceid、spanid，在记录log时带上这两个字段，就可以将一次请求串联起来</p>
-<h2 id="3-1-数据采样"><a href="#3-1-数据采样" class="headerlink" title="3.1 数据采样"></a>3.1 数据采样</h2><p>每次rpc都上报log会对系统带来灾难性的带宽消耗。在spanid=0根节点服务采样，后续都按根节点方式采样就能拼接成一个调用链路。<br><br><br>为什么有的采样会丢失？每个服务采样队列满了，多余的数据会被丢弃掉。<br><br><br>为了能保证定位问题，一般对异常链路会采样</p>
+<h2 id="3-1-数据采样"><a href="#3-1-数据采样" class="headerlink" title="3.1 数据采样"></a>3.1 数据采样</h2><p>每次rpc都上报log会对系统带来灾难性的带宽消耗。在spanid=0根节点服务采样，后续都按根节点方式采样就能拼接成一个调用链路。<br>为什么有的采样会丢失？每个服务采样队列满了，多余的数据会被丢弃掉。<br>为了能保证定位问题，一般对异常链路会采样</p>
 
       
     </div>
