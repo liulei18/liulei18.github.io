@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="1.数据库使用阶段 1.1 单库单表  1.2 单库多表(目前阶段)  1.3 多库多表   2.什么情况下需要分库分表 数据库表中的数量达到了一定的量级  数据库吞吐量达到了瓶颈，需要增加数据库实例开分解大量数据库请求带来的系统压力  扩容时对应用层的配置改变最少，需要在每个数据库实例中预留足够的数据库数量   3.解决方案 3.1 拆分的方式:垂直拆分和水平拆分垂直拆分是指，将一个属性较多，一">
+<meta name="description" content="Trace分布式链路追踪系统设计理念基于Google Dapper：分布式链路追踪系统架构，包括埋点工具、数据收集、分析、存储、展示等一系列服务。Trace通过在中间件中埋点，采集和标记分布式组件在交互时调用方法、调用时长、调用结果等一些必要信息，可以展示调用链的全貌、状态、异常等信息，也可以用来分析耗时瓶颈、通过日志排查问题。 1 链路追踪的基本概念1.1 RPC中的角色与过程：Client、S">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于数据库分库分表的一些思考">
-<meta property="og:url" content="http://yoursite.com/2022/02/08/关于数据库分库分表的一些思考/index.html">
+<meta property="og:title" content="Trace概述">
+<meta property="og:url" content="http://yoursite.com/2025/05/26/Trace概述/index.html">
 <meta property="og:site_name" content="liulei18">
-<meta property="og:description" content="1.数据库使用阶段 1.1 单库单表  1.2 单库多表(目前阶段)  1.3 多库多表   2.什么情况下需要分库分表 数据库表中的数量达到了一定的量级  数据库吞吐量达到了瓶颈，需要增加数据库实例开分解大量数据库请求带来的系统压力  扩容时对应用层的配置改变最少，需要在每个数据库实例中预留足够的数据库数量   3.解决方案 3.1 拆分的方式:垂直拆分和水平拆分垂直拆分是指，将一个属性较多，一">
+<meta property="og:description" content="Trace分布式链路追踪系统设计理念基于Google Dapper：分布式链路追踪系统架构，包括埋点工具、数据收集、分析、存储、展示等一系列服务。Trace通过在中间件中埋点，采集和标记分布式组件在交互时调用方法、调用时长、调用结果等一些必要信息，可以展示调用链的全貌、状态、异常等信息，也可以用来分析耗时瓶颈、通过日志排查问题。 1 链路追踪的基本概念1.1 RPC中的角色与过程：Client、S">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2024-05-20T08:40:26.356Z">
+<meta property="og:updated_time" content="2025-05-28T03:42:40.043Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于数据库分库分表的一些思考">
-<meta name="twitter:description" content="1.数据库使用阶段 1.1 单库单表  1.2 单库多表(目前阶段)  1.3 多库多表   2.什么情况下需要分库分表 数据库表中的数量达到了一定的量级  数据库吞吐量达到了瓶颈，需要增加数据库实例开分解大量数据库请求带来的系统压力  扩容时对应用层的配置改变最少，需要在每个数据库实例中预留足够的数据库数量   3.解决方案 3.1 拆分的方式:垂直拆分和水平拆分垂直拆分是指，将一个属性较多，一">
+<meta name="twitter:title" content="Trace概述">
+<meta name="twitter:description" content="Trace分布式链路追踪系统设计理念基于Google Dapper：分布式链路追踪系统架构，包括埋点工具、数据收集、分析、存储、展示等一系列服务。Trace通过在中间件中埋点，采集和标记分布式组件在交互时调用方法、调用时长、调用结果等一些必要信息，可以展示调用链的全貌、状态、异常等信息，也可以用来分析耗时瓶颈、通过日志排查问题。 1 链路追踪的基本概念1.1 RPC中的角色与过程：Client、S">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2022/02/08/关于数据库分库分表的一些思考/">
+  <link rel="canonical" href="http://yoursite.com/2025/05/26/Trace概述/">
 
 
 
 
 
-  <title>关于数据库分库分表的一些思考 | liulei18</title>
+  <title>Trace概述 | liulei18</title>
   
 
 
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/02/08/关于数据库分库分表的一些思考/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2025/05/26/Trace概述/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liulei18">
@@ -268,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于数据库分库分表的一些思考</h1>
+          <h1 class="post-title" itemprop="name headline">Trace概述</h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-02-08T15:29:48+08:00">
-                2022-02-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2025-05-26T10:23:25+08:00">
+                2025-05-26
               </time>
             
 
@@ -318,81 +318,14 @@
       
 
       
-        <h2 id="1-数据库使用阶段"><a href="#1-数据库使用阶段" class="headerlink" title="1.数据库使用阶段"></a>1.数据库使用阶段</h2><ul>
-<li><p>1.1 单库单表</p>
-</li>
-<li><p>1.2 单库多表(目前阶段)</p>
-</li>
-<li><p>1.3 多库多表</p>
-</li>
-</ul>
-<h2 id="2-什么情况下需要分库分表"><a href="#2-什么情况下需要分库分表" class="headerlink" title="2.什么情况下需要分库分表"></a>2.什么情况下需要分库分表</h2><ul>
-<li><p>数据库表中的数量达到了一定的量级</p>
-</li>
-<li><p>数据库吞吐量达到了瓶颈，需要增加数据库实例开分解大量数据库请求带来的系统压力</p>
-</li>
-<li><p>扩容时对应用层的配置改变最少，需要在每个数据库实例中预留足够的数据库数量</p>
-</li>
-</ul>
-<h2 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h2><ul>
-<li>3.1 拆分的方式:垂直拆分和水平拆分<br>垂直拆分是指，将一个属性较多，一行数据较大的表，将不同的属性拆分到不同的表中，以降低单库（表）大小，达到提升性能的目的的方法，垂直切分后，各个库（表）的特点是：</li>
-</ul>
-<p>（1）每个库（表）的结构都不一样</p>
-<p>（2）一般来说，每个库（表）的属性至少有一列交集，一般是主键</p>
-<p>（3）所有库（表）的并集是全量数据</p>
-<p>水平切分是指，以某个字段为依据（例如uid），按照一定规则（例如取模），将一个库（表）上的数据拆分到多个库（表）上，以降低单库（表）大小，达到提升性能的目的的方法，水平切分后，各个库（表）的特点是：</p>
-<p>（1）每个库（表）的结构都一样</p>
-<p>（2）每个库（表）的数据都不一样，没有交集</p>
-<p>（3）所有库（表）的并集是全量数据</p>
-<ul>
-<li>3.2 实现的方式:客户端分片,代理分片和支持实物的分布式数据库</li>
-</ul>
-<ul>
-<li>3.2.1 客户端分片</li>
-</ul>
-<p>具体实现方式:在应用层直接实现,通过制定JDBC协议实现，通过定制ORM框架实现</p>
-<p>应用层直接实现</p>
-<p>直接在应用层读取分片规则，然后解析分片规则，根据分片规则实现切分的路由逻辑，从应用层直接决定每次操作应该使用哪个数据库实例，数据库以及数据库表；这种实现方案虽然入侵了业务，但是实现起来比较简单，适合快速上线，而且切分逻辑由自己开发，如果在生产上产生了问题，比较容易解决</p>
-<p>制定JDBC协议实现</p>
-<p>在应用层直接实现会入侵应用的业务实现，对开发人员的能力要求较高，为了开发人员把精力集中在业务逻辑的开发上，可以通过制定jdbc协议来实现，保证业务层接口透明，Sharding JDBC便采用了这种方案</p>
-<p>通过定制ORM框架实现</p>
-<p>把分片规则实现放到ORM框架中或者通过ORM框架支持的机制来实现分库分表的逻辑，通用的做法是在Mybatis配置文件中增加表索引的参数来实现分片</p>
-<ul>
-<li>3.2.2 代理分片</li>
-</ul>
-<p>代理分片是在应用层和数据库层增加一个代理层，把分片的路由规则配置放在代理层，代理层对外提供与JDBC兼容的接口跟应用层，只需要关系业务逻辑实现，待业务逻辑实现后，在代理层配置路由规则即可，缺点是增加了代理层，尽管代理层是轻量级的转发协议，但是要实现JDBC协议的解析，并且通过分片的路由规则来路由请求，对每个数据库操作都增加了一层网络传输，对性能是有影响的，需要维护增加的代理层，也有硬件成本，还要有解决bug的技术专家，成本比价高，Cobar和MyCat是通过此种方式实现</p>
-<ul>
-<li>3.2.3 支持事务的分布式数据库</li>
-</ul>
-<p>市面上现有的产品如OceanBase，TiDB等都对外提供可伸缩的体系架构，并提供一定的分布式事务支持，将可伸缩的特点和分布式事务的实现包装到分布式数据库内部实现，对使用者透明，例如:TiDB对外提供JDBC接口，让应用层像使用MySQL一样来使用TiDB，而不用关注内部是如何伸缩，分片及处理分布式事务的，此类数据库适合非交易系统，例如大数据日志系统，统计系统，查询系统等</p>
-<h2 id="4-引起的问题"><a href="#4-引起的问题" class="headerlink" title="4.引起的问题"></a>4.引起的问题</h2><ul>
-<li>4.1 扩容与迁移<br>在分库分表后，如果涉及的分片已经达到了承载数据的最大值，就需要对集群进行扩容。扩容是很麻烦的，一般会成倍地扩容。</li>
-</ul>
-<p>通用的扩容方法包括如下5个步骤。</p>
-<p>（1）按照新旧分片规则，对新旧数据库进行双写。</p>
-<p>（2）将双写前按照旧分片规则写入的历史数据，根据新分片规则迁移写入新的数据库。</p>
-<p>（3）将按照旧的分片规则查询改为按照新的分片规则查询。</p>
-<p>（4）将双写数据库逻辑从代码中下线，只按照新的分片规则写入数据。</p>
-<p>（5）删除按照旧分片规则写入的历史数据。</p>
-<p>这里，在第2步迁移历史数据时，由于数据量很大，通常会导致不一致，因此，先清洗旧的数据，洗完后再迁移到新规则的新数据库下，再做全量对比，对比后评估在迁移的过程中是否有数据的更新，如果有的话就再清洗、迁移，最后以对比没有差距为准。</p>
-<p>如果是金融交易数据，则最好将动静数据分离，随着时间的流逝，某个时间点之前的数据是不会被更新的，我们就可以拉长双写的时间窗口，这样在足够长的时间流逝后，只需迁移那些不再被更新的历史数据即可，就不会在迁移的过程中由于历史数据被更新而导致代理不一致。</p>
-<p>在数据量巨大时，如果数据迁移后没法进行全量对比，就需要进行抽样对比，在进行抽样对比时要根据业务的特点选取一些具有某类特征性的数据进行对比。</p>
-<p>在迁移的过程中，数据的更新会导致不一致，可以在线上记录迁移过程中的更新操作的日志，迁移后根据更新日志与历史数据共同决定数据的最新状态，来达到迁移数据的最终一致性。</p>
-<p>在分库分表以后，如果查询的标准是分片的主键，则可以通过分片规则再次路由并查询；但是对于其他主键的查询、范围查询、关联查询、查询结果排序等，并不是按照分库分表维度来查询的。</p>
-<ul>
-<li>4.2 查询问题<br>例如，用户购买了商品，需要将交易记录保存下来，那么如果按照买家的纬度分表，则每个买家的交易记录都被保存在同一表中，我们可以很快、很方便地查到某个买家的购买情况，但是某个商品被购买的交易数据很有可能分布在多张表中，查找起来比较麻烦。反之，按照商品维度分表，则可以很方便地查找到该商品的购买情况，但若要查找到买家的交易记录，则会比较麻烦。</li>
-</ul>
-<p>所以常见的解决方式如下。</p>
-<p>（1）在多个分片表查询后合并数据集，这种方式的效率很低。</p>
-<p>（2）记录两份数据，一份按照买家纬度分表，一份按照商品维度分表。</p>
-<p>（3）通过搜索引擎解决，但如果实时性要求很高，就需要实现实时搜索。</p>
-<p>实际上，在高并发的服务平台下，交易系统是专门做交易的，因为交易是核心服务，SLA的级别比较高，所以需要和查询系统分离，查询一般通过其他系统进行，数据也可能是冗余存储的。</p>
-<p>这里再举个例子，在某电商交易平台下，可能有买家查询自己在某一时间段的订单，也可能有卖家查询自己在某一时间段的订单，如果使用了分库分表方案，则这两个需求是难以满足的。因此，通用的解决方案是，在交易生成时生成一份按照买家分片的数据副本和一份按照卖家分片的数据副本，查询时分别满足之前的两个需求，因此，查询的数据和交易的数据可能是分别存储的，并从不同的系统提供接口。</p>
-<p>另外，在电商系统中，在一个交易订单生成后，一般需要引用到订单中交易的商品实体，如果简单地引用，若商品的金额等信息发生变化，则会导致原订单上的商品信息也会发生变化，这样买家会很疑惑。因此，通用的解决方案是在交易系统中存储商品的快照，在查询交易时使用交易的快照，因为快照是个静态数据，永远都不会更新，所以解决了这个问题。可见查询的问题最好在单独的系统中使用其他技术来解决，而不是在交易系统中实现各类查询功能；当然，也可以通过对商品的变更实施版本化，在交易订单中引用商品的版本信息，在版本更新时保留商品的旧版本，这也是一种不错的解决方案。</p>
-<p>最后，关联的表有可能不在同一数据库中，所以基本不可能进行联合查询，需要借助大数据技术来实现，也就是上面所说的第3种方法，即通过大数据技术统一聚合和处理关系型数据库的数据，然后对外提供查询操作</p>
-<p>通过大数据方式来提供聚合查询的方式</p>
-<p>4.3 分布式事务<br>三种解决方案:两段式提交协议，最大努力保证模式和事务补偿机制</p>
-<p>4.4 同组数据跨库<br>要尽量把同一组数据放到同一台数据库服务器上，不但在某些场景下可以利用本地事务的强一致性，还可以使这组数据自治。以电商为例，我们的应用有两个数据库db0和db1，分库分表后，按照id维度，将卖家A的交易信息存放到db0中。当数据库db1挂掉时，卖家A的交易信息不受影响，依然可以正常使用。也就是说，要避免数据库中的数据依赖另一数据库中的数据。</p>
+        <p>Trace分布式链路追踪系统设计理念基于<a href="https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/" target="_blank" rel="noopener">Google Dapper：分布式链路追踪系统架构</a>，包括埋点工具、数据收集、分析、存储、展示等一系列服务。Trace通过在中间件中埋点，采集和标记分布式组件在交互时调用方法、调用时长、调用结果等一些必要信息，可以展示调用链的全貌、状态、异常等信息，也可以用来分析耗时瓶颈、通过日志排查问题。</p>
+<h1 id="1-链路追踪的基本概念"><a href="#1-链路追踪的基本概念" class="headerlink" title="1 链路追踪的基本概念"></a>1 链路追踪的基本概念</h1><h2 id="1-1-RPC中的角色与过程：Client、Server、Trace"><a href="#1-1-RPC中的角色与过程：Client、Server、Trace" class="headerlink" title="1.1 RPC中的角色与过程：Client、Server、Trace"></a>1.1 RPC中的角色与过程：Client、Server、Trace</h2><p>Trace：用户一次完整的请求过程</p>
+<h2 id="1-2-调用链路中的标记信息：TraceId、SpanId、SpanName"><a href="#1-2-调用链路中的标记信息：TraceId、SpanId、SpanName" class="headerlink" title="1.2 调用链路中的标记信息：TraceId、SpanId、SpanName"></a>1.2 调用链路中的标记信息：TraceId、SpanId、SpanName</h2><p>TraceId：用户一次完整请求过程的唯一id标记<br>SpanName：调用不同的环节，通常根据交互的角色不同稍有不同，rpc中spanname可以是类名+方法名，数据库 spanname 可以是sql，kafka可以使用topic+消费组<br>SpanId：调用的发起顺序</p>
+<h2 id="1-3-埋点上报的单位：Span"><a href="#1-3-埋点上报的单位：Span" class="headerlink" title="1.3 埋点上报的单位：Span"></a>1.3 埋点上报的单位：Span</h2><p>Span：埋点信息。<br><br><br>RPC调用的埋点由server、client参与，调用完成后，server、client分别上报一个埋点信息，称为span。</p>
+<h2 id="1-4-用户自定义埋点：Annotation、Context"><a href="#1-4-用户自定义埋点：Annotation、Context" class="headerlink" title="1.4 用户自定义埋点：Annotation、Context"></a>1.4 用户自定义埋点：Annotation、Context</h2><p>Annotation：自定义埋点，主要用于属性上报，手动传递key-value 到span中。比如给trace加上userid=xxx<br><br><br>Context：上下文，主要用于server、client的通信参数，传递的信息包括灰度标记、泳道信息等，主要在全链路压测（传递压测标识）、服务鉴权等场景使用</p>
+<h1 id="2-工作原理"><a href="#2-工作原理" class="headerlink" title="2 工作原理"></a>2 工作原理</h1><p>同一个线程同一时间只会处理同一个请求，可以使用ThreadLocal变量存储client、server的Span对象</p>
+<h1 id="3-数据采集"><a href="#3-数据采集" class="headerlink" title="3 数据采集"></a>3 数据采集</h1><p>有traceid、spanid，在记录log时带上这两个字段，就可以将一次请求串联起来</p>
+<h2 id="3-1-数据采样"><a href="#3-1-数据采样" class="headerlink" title="3.1 数据采样"></a>3.1 数据采样</h2><p>每次rpc都上报log会对系统带来灾难性的带宽消耗。在spanid=0根节点服务采样，后续都按根节点方式采样就能拼接成一个调用链路。<br><br><br>为什么有的采样会丢失？每个服务采样队列满了，多余的数据会被丢弃掉。<br><br><br>为了能保证定位问题，一般对异常链路会采样</p>
 
       
     </div>
@@ -446,8 +379,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2022/01/21/区块链发展与应用/" rel="next" title="区块链发展与应用">
-                <i class="fa fa-chevron-left"></i> 区块链发展与应用
+              <a href="/2024/09/29/Redis容量评估/" rel="next" title="Redis容量评估">
+                <i class="fa fa-chevron-left"></i> Redis容量评估
               </a>
             
           </div>
@@ -455,10 +388,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2023/12/04/女性如何提高抗风险能力？/" rel="prev" title="女性如何提高抗风险能力？">
-                女性如何提高抗风险能力？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -590,7 +519,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-数据库使用阶段"><span class="nav-number">1.</span> <span class="nav-text">1.数据库使用阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-什么情况下需要分库分表"><span class="nav-number">2.</span> <span class="nav-text">2.什么情况下需要分库分表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-解决方案"><span class="nav-number">3.</span> <span class="nav-text">3.解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-引起的问题"><span class="nav-number">4.</span> <span class="nav-text">4.引起的问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-链路追踪的基本概念"><span class="nav-number">1.</span> <span class="nav-text">1 链路追踪的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-RPC中的角色与过程：Client、Server、Trace"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 RPC中的角色与过程：Client、Server、Trace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-调用链路中的标记信息：TraceId、SpanId、SpanName"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 调用链路中的标记信息：TraceId、SpanId、SpanName</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-埋点上报的单位：Span"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 埋点上报的单位：Span</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-用户自定义埋点：Annotation、Context"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 用户自定义埋点：Annotation、Context</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-工作原理"><span class="nav-number">2.</span> <span class="nav-text">2 工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-数据采集"><span class="nav-number">3.</span> <span class="nav-text">3 数据采集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-数据采样"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 数据采样</span></a></li></ol></li></ol></div>
             
 
           </div>
